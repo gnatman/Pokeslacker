@@ -8,10 +8,10 @@ from slackclient import SlackClient
 import json
 import requests
 
-SLACK_TOKEN = <SLACK TOKEN>
-SLACK_WEBHOOK_SECRET = <SLACK WEBHOOK SECRET>
+SLACK_DEV_TOKEN = <SLACK TOKEN> #Put your API dev token here
+SLACK_WEBHOOK_TOKEN = <WEBHOOK TOKEN> #Put your webhook token here
 
-slack_client = SlackClient(SLACK_TOKEN)
+slack_client = SlackClient(SLACK_DEV_TOKEN)
 
 def extract_types(json_in, relation):
     types_list = []
@@ -84,7 +84,7 @@ def send_message(channel_id, message):
 @app.route('/', methods=['POST'])
 def inbound():
     #if statement ensures outside sources won't spam the channel
-    if request.form.get('token') == SLACK_WEBHOOK_SECRET:
+    if request.form.get('token') == SLACK_WEBHOOK_TOKEN:
         #Channel the request came from
         channel_id = request.form.get('channel_id')
         #Text sent by the user
