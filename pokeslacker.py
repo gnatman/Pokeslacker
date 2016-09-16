@@ -29,7 +29,7 @@ def extract_types(json_in, relation):
 def get_relations(input_type):
     #Perform an HTTP GET request,
     #grab the text portion of the response.
-    url = 'http://pokeapi.co/api/v2/type/bug/'
+    url = 'http://pokeapi.co/api/v2/type/'+input_type+'/'
     requests_text = requests.get(url).text
     #Load the GET request text into a Python dictionary.
     json_returned = json.loads(requests_text)
